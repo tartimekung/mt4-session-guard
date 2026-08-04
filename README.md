@@ -158,11 +158,9 @@ Verified against a live demo feed. Server time ran four hours behind the termina
 
 **Daily close** fired once at the configured minute and did not repeat:
 
-```
-DAILY CLOSE | trigger reached at 16:46 server | positions=1
-DRY RUN | would close #253337880 0.01 lots | daily close 16:43
-DAILY CLOSE | 1 position(s) handled
-```
+![Daily close firing once](docs/daily-close-log.png)
+
+The trigger logs its own firing before it logs any close, so the schedule can be verified even on a day when nothing is open.
 
 **Blocked days** — with `BlockTuesday` enabled on a Tuesday, the panel reported `New trades : BLOCKED`.
 
@@ -172,6 +170,10 @@ DAILY CLOSE | 1 position(s) handled
 |---|---|---|
 | 22:00–06:00 (wraps midnight) | BLOCKED | BLOCKED |
 | 10:00–20:00 (same day) | ALLOWED | ALLOWED |
+
+![Overnight window blocking outside its hours](docs/window-blocked.png)
+
+![Same-day window allowing inside its hours](docs/window-allowed.png)
 
 Testing only the second case would pass on a broken implementation, since the wrapping branch is the one that fails.
 
