@@ -158,7 +158,7 @@ Verified against a live demo feed. Server time ran four hours behind the termina
 
 **Daily close** fired once at the configured minute and did not repeat:
 
-![Daily close firing once](%3A%20docs/daily-close-log.png)
+![Daily close firing once](docs/daily-close-log.png)
 
 The trigger logs its own firing before it logs any close, so the schedule can be verified even on a day when nothing is open.
 
@@ -171,9 +171,9 @@ The trigger logs its own firing before it logs any close, so the schedule can be
 | 22:00–06:00 (wraps midnight) | BLOCKED | BLOCKED |
 | 10:00–20:00 (same day) | ALLOWED | ALLOWED |
 
-![Overnight window blocking outside its hours](%3A%20docs/window-blocked.png)
+![Overnight window blocking outside its hours](docs/window-blocked.png)
 
-![Same-day window allowing inside its hours](%3A%20docs/window-allowed.png)
+![Same-day window allowing inside its hours](docs/window-allowed.png)
 
 Testing only the second case would pass on a broken implementation, since the wrapping branch is the one that fails.
 
